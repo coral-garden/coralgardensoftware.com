@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coral Garden Software</title>
+  <meta name="description" content="Coral Garden is an independent software studio building SaaS products, internal tools, and practical AI integrations for small businesses." />
+  <style>
+    :root {
+      --bg: #f6fbfb;
+      --surface: rgba(255,255,255,0.72);
+      --text: #163338;
+      --muted: #527277;
+      --line: rgba(22, 51, 56, 0.10);
+      --accent: #117a7a;
+      --accent-dark: #0d6262;
+      --shadow: 0 16px 48px rgba(17, 67, 74, 0.10);
+      --radius: 24px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(17,122,122,0.10), transparent 32%),
+        radial-gradient(circle at top right, rgba(18,81,110,0.10), transparent 28%),
+        linear-gradient(180deg, #f8fcfc 0%, #eef8f7 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(calc(100% - 2rem), var(--max)); margin: 0 auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(246, 251, 251, 0.74);
+      border-bottom: 1px solid rgba(22, 51, 56, 0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 5.5rem 0 4rem;
+    }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.65);
+      box-shadow: var(--shadow);
+      border-radius: 32px;
+      padding: clamp(2rem, 4vw, 4rem);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 { line-height: 1.1; margin: 0 0 1rem; }
+    h1 {
+      font-size: clamp(2.8rem, 8vw, 5.6rem);
+      max-width: 11ch;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-copy {
+      max-width: 42rem;
+      font-size: 1.08rem;
+      color: var(--muted);
+      margin: 1.25rem 0 0;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 1.3rem;
+      border-radius: 999px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: 180ms ease;
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 12px 28px rgba(17, 122, 122, 0.22);
+    }
+
+    .button-primary:hover { background: var(--accent-dark); }
+    .button-secondary {
+      border-color: var(--line);
+      color: var(--text);
+      background: rgba(255,255,255,0.52);
+    }
+
+    .section {
+      padding: 1.5rem 0 4rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 10px 28px rgba(20, 58, 61, 0.06);
+    }
+
+    .card p, .section-copy, li { color: var(--muted); }
+    .section-title {
+      max-width: 24rem;
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-copy {
+      max-width: 45rem;
+      margin-bottom: 2rem;
+      font-size: 1.04rem;
+    }
+
+    ul.clean {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    ul.clean li::before {
+      content: "•";
+      color: var(--accent);
+      display: inline-block;
+      width: 1rem;
+      margin-left: -1rem;
+    }
+
+    .quote {
+      font-size: 1.2rem;
+      color: var(--text);
+      max-width: 48rem;
+      margin: 0;
+    }
+
+    .contact-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 820px) {
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .hero { padding-top: 4rem; }
+      .contact-box { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top">Coral Garden Software</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <span class="eyebrow">Independent software studio</span>
+          <h1>Well-made software for real businesses.</h1>
+          <p class="hero-copy">
+            Coral Garden builds SaaS products, internal tools, and practical AI integrations for small businesses that want things to work properly. Calm, capable delivery. Thoughtful systems. No theatre.
+          </p>
+          <div class="cta-row">
+            <a class="button button-primary" href="mailto:admin@coralgardensoftware.com">Talk to us</a>
+            <a class="button button-secondary" href="#services">See what we do</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <h2 class="section-title">What we build</h2>
+        <p class="section-copy">
+          We work with small businesses that need software to be clear, useful, and well made. That might mean a product from scratch, a better internal system, or an AI integration that solves a real problem rather than inventing a new one.
+        </p>
+        <div class="grid grid-3">
+          <article class="card">
+            <h3>SaaS products</h3>
+            <p>New products, polished MVPs, and sturdier systems for teams that have outgrown rough prototypes and off-the-shelf compromise.</p>
+          </article>
+          <article class="card">
+            <h3>Internal tools</h3>
+            <p>Purpose-built software that fits the way your business actually works, rather than asking your team to contort itself around generic tools.</p>
+          </article>
+          <article class="card">
+            <h3>Practical AI integration</h3>
+            <p>Thoughtful automation and AI features where they genuinely help: reducing manual work, improving access to information, and making systems easier to use.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="container">
+        <h2 class="section-title">Our approach</h2>
+        <p class="section-copy">
+          Thoughtful rather than theatrical. We care about the details, we communicate plainly, and we build systems that fit real working life.
+        </p>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>What you can expect</h3>
+            <ul class="clean">
+              <li>Clear communication and sensible recommendations</li>
+              <li>Modern tools, used with a steady hand</li>
+              <li>Software designed to be used, not merely demonstrated</li>
+              <li>Careful implementation with an eye on maintainability</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>What we avoid</h3>
+            <ul class="clean">
+              <li>Buzzword-heavy sales language</li>
+              <li>AI theatre and magical promises</li>
+              <li>Needless complexity dressed up as sophistication</li>
+              <li>Cheap shortcuts that create larger problems later</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="card">
+          <p class="quote">
+            Serious software, without the theatre.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="card contact-box">
+          <div>
+            <h2 class="section-title">Let’s make something useful.</h2>
+            <p class="section-copy" style="margin-bottom:0; max-width:36rem;">
+              If you need a SaaS product, a better internal system, or an AI integration built with care, we’d be glad to hear from you.
+            </p>
+          </div>
+          <div class="cta-row" style="margin-top:0;">
+            <a class="button button-primary" href="mailto:admin@coralgardensoftware.com">admin@coralgardensoftware.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © Coral Garden Software
+    </div>
+  </footer>
+</body>
+</html>
